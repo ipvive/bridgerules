@@ -1,0 +1,22 @@
+ * [DONE] (c) data layout
+ * [DONE] (python) wrapper class with game api - execute_action_ids
+ * (python) execute_action_ids; get game_test to pass.
+   * [DONE] all reachable tested code minus `execute_*_action`, commentary.
+   * [DONE] execute_call_action
+     * [DONE] newly reachable tested code
+   * [DONE] execute_bid_action
+     * [DONE] newly reachable tested code
+   * [DONE] execute_play_action
+     * [DONE] newly reachable tested code
+   * event tracing
+     * newly reachable tested code
+   * tests for used but untested stuff
+     * newly reachable tested code
+   * commentary
+ * [YAGNI?] (c) execute_action_ids; verify game_test passes.
+-----
+ * avoid C until state stabilizes.
+ * resolve:
+   * we test last_bid_level == None.
+
+ * optimize debug version.

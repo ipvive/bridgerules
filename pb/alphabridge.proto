@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package bridgebot;
+option go_package = "ipvive/eios/bridgebot/pb";
+
+message Hand {
+    repeated string card_token = 1;
+};
+
+message Action {
+    string token = 1;
+    repeated float mcts_visit_fraction = 2;
+};
+
+message Annotation {
+    int32 action_index = 1; // Occurs _before_ actions[action_index].
+    // Exactly one of the below should be set.
+    string explanation = 2;
+    string kibitzer_comment = 3;
+};
+
+message Result {
+    repeated string summary_token = 1;
+    int32 table_score = 2;
+    int32 comparison_score = 3;
+};
+
+message Board {
+    string board_sequence_name = 1;
+    repeated string vulnerable_seat = 2;
+    string scoring = 3;
+    string dealer = 4;
+    map<string, Hand> dealt_cards = 5;
+};
+
+message PlayerId {
+    string player_name = 1;
+    string partnership_agreement_url = 2;
+};
+
+message PlayedGame {
+    map<string, PlayerId> player = 1;
+    Board board = 3;
+    repeated Action actions = 4;
+    Result result = 5;
+    string table_name = 6;
+    repeated Annotation annotations = 7;
+};
+
+message BoardId {
+    string source_uri = 1;
+};
+
+message PlayedBoard {
+    BoardId board_id = 1;
+    repeated PlayedGame tables = 3;
+};
